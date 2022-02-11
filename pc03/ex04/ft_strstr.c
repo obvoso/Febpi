@@ -1,29 +1,34 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 15:55:07 by soo               #+#    #+#             */
-/*   Updated: 2022/02/10 20:27:30 by soo              ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 
 char	*ft_strstr(char *str, char *to_find)
-{	
-	int	i;
-	int	j;
+{
+	char	*sp;
+	char	*fp;
+	int	flag;
 
+	flag = 0;
+	if (*to_find == 0)
+		return (str);
 	while (*str)
 	{
-		while (*to_find)
+		while (*str != *to_find)
+			++str;
+		sp = str;
+		fp = to_find;
+		while (*fp)
 		{
-			if (*str != *to_find)
+			if (*fp == *sp)
+				flag = 1;
+			else
+			{
+				flag = 0;
 				break ;
-			++to_find;
+			}
+			++fp;
+			++sp;
 		}
+		if (flag)
+			return (str);
 		++str;
 	}
+	return (0);
 }
