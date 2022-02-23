@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_foreach.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: schoe <schoe@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/21 13:36:13 by soo               #+#    #+#             */
-/*   Updated: 2022/02/22 20:07:06 by soo              ###   ########.fr       */
+/*   Created: 2022/02/05 09:53:56 by schoe             #+#    #+#             */
+/*   Updated: 2022/02/06 19:21:38 by schoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_foreach(int *tab, int length, void(*f)(int))
-{
-	int	i;
+void	rush(int x, int y);
 
-	i = 0;
-	while (i < length)
-		f(tab[i++]);
+int	main(void)
+{
+	rush(4, 4);
+	return (0);
 }

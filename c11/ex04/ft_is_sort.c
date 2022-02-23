@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 16:52:15 by soo               #+#    #+#             */
-/*   Updated: 2022/02/22 14:32:23 by soo              ###   ########.fr       */
+/*   Updated: 2022/02/23 10:16:01 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,5 @@ int	is_rev_sort(int *tab, int length, int(*f)(int, int))
 
 int	ft_is_sort(int	*tab, int length, int(*f)(int, int))
 {
-	if (!length)
-		return (0);
-	if (!is_sort(tab, length, f) && !is_rev_sort(tab, length, f))
-		return (0);
-	return (1);
+	return (is_sort(tab, length, f) || is_rev_sort(tab, length, f));
 }

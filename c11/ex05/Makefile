@@ -6,7 +6,7 @@
 #    By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 18:38:40 by soo               #+#    #+#              #
-#    Updated: 2022/02/22 14:15:38 by soo              ###   ########.fr        #
+#    Updated: 2022/02/23 09:52:40 by soo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,10 @@ CFLAGS = -Wall -Wextra -Werror
 NAME = do-op
 
 INC = my.h 
-SRCS =	main.c print_change.c oper.c
+SRCS =	do_main.c print_change.c oper.c
 OBJS = $(SRCS:.c=.o)
 
-.PHONY : all clean
+.PHONY : all clean fclean re
 
 all : $(NAME)
 
@@ -30,3 +30,8 @@ $(NAME) : $(OBJS)
 
 clean :
 	rm -f $(OBJS)
+
+fclean : clean
+	rm -f $(NAME)
+
+re : fclean all

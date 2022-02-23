@@ -1,27 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my.h                                               :+:      :+:    :+:   */
+/*   rush00.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/21 21:40:28 by soo               #+#    #+#             */
-/*   Updated: 2022/02/23 13:06:03 by soo              ###   ########.fr       */
+/*   Created: 2022/02/05 09:47:09 by soo               #+#    #+#             */
+/*   Updated: 2022/02/05 11:54:00 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MY_H
-# define MY_H
+#include "../ft_putchar.c"
 
-# include <unistd.h>
-# include "op.h"
-
-int		is_valid(char *s);
-void	check_ops(int a, int b, int(*f[])(int, int), int i);
 void	ft_putchar(char c);
-void	ft_putnbr(int n);
-int		ft_atoi(char *str);
-int		sep_op(char op);
-int		main(int argc, char **argv);
 
-#endif
+void	rush(int a, int b)
+{
+	int	cul;
+	int	row;
+
+	cul = 1;
+	while (cul <= b)
+	{	
+		row = 1;
+		while (row <= a)
+		{
+			if ((row == 1 || row == a) && (cul == 1 || cul == b))
+				ft_putchar('o');
+			else if (cul == 1 || cul == b)
+				ft_putchar('-');
+			else if (row == 1 || row == a)
+				ft_putchar('|');
+			else 
+				ft_putchar(' ');
+			++row;
+		}
+		ft_putchar('\n');
+		++cul;
+	}	
+}

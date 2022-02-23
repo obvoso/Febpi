@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my.h                                               :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/21 21:40:28 by soo               #+#    #+#             */
-/*   Updated: 2022/02/23 13:06:03 by soo              ###   ########.fr       */
+/*   Created: 2022/02/05 10:58:11 by soo               #+#    #+#             */
+/*   Updated: 2022/02/05 18:36:52 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MY_H
-# define MY_H
+void	rush (int x, int y);
 
-# include <unistd.h>
-# include "op.h"
+int	main()
+{
+	rush(2,-3);
+	return (0);
+}
 
-int		is_valid(char *s);
-void	check_ops(int a, int b, int(*f[])(int, int), int i);
-void	ft_putchar(char c);
-void	ft_putnbr(int n);
-int		ft_atoi(char *str);
-int		sep_op(char op);
-int		main(int argc, char **argv);
-
-#endif

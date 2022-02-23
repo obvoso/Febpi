@@ -6,13 +6,13 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 13:44:47 by soo               #+#    #+#             */
-/*   Updated: 2022/02/22 14:12:32 by soo              ###   ########.fr       */
+/*   Updated: 2022/02/23 13:06:22 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "my.h"
 
-int		is_valid(char c);
+int		is_valid(char *s);
 void	check_ops(int a, int b, int(*f[])(int, int), int i);
 void	ft_putchar(char c);
 void	ft_putnbr(int n);
