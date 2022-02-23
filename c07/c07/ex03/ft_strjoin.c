@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 20:57:55 by soo               #+#    #+#             */
-/*   Updated: 2022/02/17 11:02:22 by soo              ###   ########.fr       */
+/*   Updated: 2022/02/19 09:55:17 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	{
 		strs_len = get_len(strs, size);
 		ret = (char *)malloc(strs_len + (sep_len * (size - 1)) + 1);
+		if (!(ret))
+			return (0);
 		str_combine(size, strs, sep, ret);
 	}
 	else

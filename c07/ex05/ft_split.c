@@ -6,7 +6,7 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 17:42:59 by soo               #+#    #+#             */
-/*   Updated: 2022/02/19 09:57:34 by soo              ###   ########.fr       */
+/*   Updated: 2022/02/20 18:54:59 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	cnt_size(char *str, char *charset)
 	cnt = 0;
 	while (*str)
 	{
-		if (is_in_charset(*str, charset))
+		if (!is_in_charset(*str, charset))
 		{
 			++cnt;
 			while (*str && !is_in_charset(*str, charset))

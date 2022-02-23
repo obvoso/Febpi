@@ -1,47 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_rev_params.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/16 16:02:40 by soo               #+#    #+#             */
-/*   Updated: 2022/02/19 09:26:49 by soo              ###   ########.fr       */
+/*   Created: 2022/02/15 21:50:50 by soo               #+#    #+#             */
+/*   Updated: 2022/02/16 09:19:27 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <unistd.h>
 
-int	get_len(char *str)
+void	put_str(char *str)
 {
-	int	len;
-
-	len = 0;
-	while (str[len])
-		++len;
-	return (len);
-}
-
-char	*str_cpy(char *str1, char *str2)
-{
-	int	i;
-
-	i = 0;
-	while (str2[i])
+	while (*str)
 	{
-		str1[i] = str2[i];
-		++i;
+		write(1, str, 1);
+		++str;
 	}
-	str1[i] = 0;
-	return (str1);
+	write(1, "\n", 1);
 }
 
-char	*ft_strdup(char *src)
+int	main(int argc, char **argv)
 {
-	char	*ret;
-
-	ret = (char *)malloc(get_len(src) + 1);
-	if (!ret)
+	if (argc == 1)
 		return (0);
-	return (str_cpy(ret, src));
+	while (--argc > 0)
+		put_str(argv[argc]);
+	return (0);
 }

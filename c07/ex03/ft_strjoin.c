@@ -6,14 +6,13 @@
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 20:57:55 by soo               #+#    #+#             */
-/*   Updated: 2022/02/16 21:52:26 by soo              ###   ########.fr       */
+/*   Updated: 2022/02/19 09:55:17 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
 
-int	get_len(char **strs)
+int	get_len(char **strs, int size)
 {
 	int	len;
 	int	i;
@@ -21,40 +20,63 @@ int	get_len(char **strs)
 
 	len = 0;
 	i = 0;
-	while (strs[i][0])
+	while (i < size)
 	{
 		j = 0;
-		while (strs[i][j])
-		{	
+		while (strs[i][j++])
 			++len;
-			++j;
-		}
 		++i;
 	}
 	return (len);
 }
+
+char	*str_combine(int size, char **strs, char *sep, char *ret)
+{
+	int	ret_idx;
+	int	sep_idx;
+	int	i;
+	int	j;
+
+	i = 0;
+	ret_idx = 0;
+	while (i < size)
+	{
+		j = 0;
+		while (strs[i][j])
+			ret[ret_idx++] = strs[i][j++];
+		++i;
+		if (i < size)
+		{
+			sep_idx = 0;
+			while (sep[sep_idx])
+				ret[ret_idx++] = sep[sep_idx++];
+		}
+	}
+	ret[ret_idx] = 0;
+	return (ret);
+}
+
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
-	int	len;
-	char *ret;
+	int		strs_len;
+	int		sep_len;
+	char	*ret;
 
-	ret = (char *)malloc(get_len(strs) + size);
-	if (size != 0)
+	sep_len = 0;
+	while (sep[sep_len])
+		++sep_len;
+	if (size)
 	{
-
+		strs_len = get_len(strs, size);
+		ret = (char *)malloc(strs_len + (sep_len * (size - 1)) + 1);
+		if (!(ret))
+			return (0);
+		str_combine(size, strs, sep, ret);
 	}
-	
-
+	else
+	{
+		ret = (char *)malloc(1);
+		*ret = 0;
+	}
+	return (ret);
 }	
-
-int main()
-{
-	char *strs[3];
-	strs[0] = "AaAaA";
-	strs[1] = "BbBbB";
-	srrs[2] = "tlqkf";
-	
-	char *sep;
-	sep = ", ";
-	printf("%s\n", ft_strjoin(3, strs, sep));
-}

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/17 17:42:59 by soo               #+#    #+#             */
-/*   Updated: 2022/02/19 09:57:34 by soo              ###   ########.fr       */
+/*   Created: 2022/02/20 18:08:40 by soo               #+#    #+#             */
+/*   Updated: 2022/02/20 18:41:00 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,33 +23,36 @@ int	is_in_charset(char c, char *charset)
 	return (0);
 }
 
-char	*str_cpy(char *start, char *end, char *ret)
+int	get_size(char *str, char *charset)
 {
-	int	i;
+	int	size;
 
-	i = 0;
-	while (start < end)
-		ret[i++] = *start++;
-	ret[i] = 0;
-	return (ret);
-}
-
-int	cnt_size(char *str, char *charset)
-{	
-	int	cnt;
-
-	cnt = 0;
+	size = 0;
 	while (*str)
 	{
-		if (is_in_charset(*str, charset))
+		if (!is_in_charset(*str, charset))
 		{
-			++cnt;
+			++size;
 			while (*str && !is_in_charset(*str, charset))
 				++str;
 		}
 		++str;
 	}
-	return (cnt);
+	return (size);
+}
+
+char	*str_cpy(char *ret, char *str, char *start)
+{
+	int	i;
+
+	i = 0;
+	while (start < str)
+	{
+		ret[i] = *start++;
+		++i;
+	}
+	ret[i] = 0;
+	return (ret);
 }
 
 char	**ft_split(char *str, char *charset)
@@ -59,18 +62,18 @@ char	**ft_split(char *str, char *charset)
 	int		i;
 
 	i = 0;
-	ret = (char **)malloc(sizeof(char *) * cnt_size(str, charset) + 1);
-	if (!(ret))
+	ret = (char **)malloc(sizeof(char *) * get_size(str, charset) + 1);
+	if (!ret)
 		return (0);
 	while (*str)
-	{	
+	{
 		if (!is_in_charset(*str, charset))
 		{
 			start = str;
 			while (*str && !is_in_charset(*str, charset))
 				++str;
 			ret[i] = (char *)malloc(str - start + 1);
-			str_cpy(start, str, ret[i++]);
+			str_cpy(ret[i++], str, start);
 		}
 		++str;
 	}

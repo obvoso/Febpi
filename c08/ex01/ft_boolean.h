@@ -1,47 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_boolean.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/16 16:02:40 by soo               #+#    #+#             */
-/*   Updated: 2022/02/19 09:26:49 by soo              ###   ########.fr       */
+/*   Created: 2022/02/19 19:30:47 by soo               #+#    #+#             */
+/*   Updated: 2022/02/20 08:35:46 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#ifndef FT_BOOLEAN_H
+# define FT_BOOLEAN_H
 
-int	get_len(char *str)
-{
-	int	len;
+# include <unistd.h>
 
-	len = 0;
-	while (str[len])
-		++len;
-	return (len);
-}
+typedef int	t_bool;
 
-char	*str_cpy(char *str1, char *str2)
-{
-	int	i;
+# define SUCCESS 0
+# define TRUE 1
+# define FALSE 0
+# define EVEN_MSG "I have an even number of arguments.\n"
+# define ODD_MSG "I have an odd number of arguments.\n"
+# define EVEN(nbr) (nbr % 2 == 0) ? 1 : 0
 
-	i = 0;
-	while (str2[i])
-	{
-		str1[i] = str2[i];
-		++i;
-	}
-	str1[i] = 0;
-	return (str1);
-}
-
-char	*ft_strdup(char *src)
-{
-	char	*ret;
-
-	ret = (char *)malloc(get_len(src) + 1);
-	if (!ret)
-		return (0);
-	return (str_cpy(ret, src));
-}
+#endif

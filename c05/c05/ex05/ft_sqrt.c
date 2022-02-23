@@ -1,47 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soo <soo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/16 16:02:40 by soo               #+#    #+#             */
-/*   Updated: 2022/02/19 09:26:49 by soo              ###   ########.fr       */
+/*   Created: 2022/02/14 17:46:16 by soo               #+#    #+#             */
+/*   Updated: 2022/02/15 20:00:32 by soo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <stdio.h>
 
-#include <stdlib.h>
-
-int	get_len(char *str)
+int	ft_sqrt(int nb)
 {
-	int	len;
+	int	m;
 
-	len = 0;
-	while (str[len])
-		++len;
-	return (len);
-}
-
-char	*str_cpy(char *str1, char *str2)
-{
-	int	i;
-
-	i = 0;
-	while (str2[i])
-	{
-		str1[i] = str2[i];
-		++i;
-	}
-	str1[i] = 0;
-	return (str1);
-}
-
-char	*ft_strdup(char *src)
-{
-	char	*ret;
-
-	ret = (char *)malloc(get_len(src) + 1);
-	if (!ret)
+	//nb = (long long)nb;
+	if (nb < 1)
 		return (0);
-	return (str_cpy(ret, src));
+	if (nb == 1)
+		return (1);
+	m = 2;
+	while (m * m < nb) {
+		if (m * m < 0 ) {
+			printf("%d\n", m);
+			return (0);
+		}
+		++m;
+	}
+	if (m * m == nb)
+		return (m);
+	return (0);
+}
+
+int main(void)
+{
+	ft_sqrt(2147483647);
 }
